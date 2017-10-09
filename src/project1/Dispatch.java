@@ -14,7 +14,7 @@ public class Dispatch {
       this.rate = rate;
    }
    
-   public Job findDriver(Trip t, Passenger passenger)
+   public Driver findDriver(Trip t, Passenger passenger)
    {
       //TODO: implement method
       return null;
@@ -25,7 +25,7 @@ public class Dispatch {
       return (float)(trip.distance() * rate);
    }
    
-   public void charge(Job j)
+   public void charge(Driver d, float fare, Passenger p)
    {
       //TODO IMPLEMENT
    }

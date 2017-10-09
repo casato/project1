@@ -31,7 +31,11 @@ public class Driver {
       this.isAvailable = isAvailable;
    }
    
-   
+   public float getFare(Trip t)
+   {
+      //TODO implement this
+      return 0;
+   }
    
    
 

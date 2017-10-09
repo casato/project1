@@ -22,10 +22,10 @@ public class Passenger {
    
    public void requestTrip(Trip trip)
    {
-      Job job = dispatch.findDriver(trip, this);
-      if(job != null)
+      Driver driver = dispatch.findDriver(trip, this);
+      if(driver != null)
       {
-         dispatch.charge(job);
+         dispatch.charge(driver, driver.getFare(trip), this);
       }
       else
       {
