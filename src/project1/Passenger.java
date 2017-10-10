@@ -5,6 +5,7 @@ public class Passenger {
    private String lastName;
    private float balance;
    private Dispatch dispatch;
+   //new comment
    
    public Passenger(String firstName, String lastName, float balance, Dispatch dispatch)
    {
