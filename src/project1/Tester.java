@@ -16,6 +16,7 @@ public class Tester {
    public void testTripToString()
    {
       Trip t = new Trip(0, 0, 3, 4);
+      System.out.println(t);
       assertEquals(t.toString(), "Trip from (0, 0) to (3, 4)");
    }
 

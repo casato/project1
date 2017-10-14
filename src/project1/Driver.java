@@ -6,6 +6,7 @@ public class Driver {
    private String carTitle;
    private boolean isAvailable;
    private float balance;
+   private float payRate;
    
    /**
     * Instantiates a Driver object with name and car title.
@@ -13,13 +14,14 @@ public class Driver {
     * @param lastName The driver's last name
     * @param carTitle The driver's car
     */
-   public Driver(String firstName, String lastName, String carTitle, float balance)
+   public Driver(String firstName, String lastName, String carTitle, float balance, float payRate)
    {
       isAvailable = true;
       this.firstName = firstName;
       this.lastName = lastName;
       this.carTitle = carTitle;
       this.balance = balance;
+      this.payRate = payRate;
    }
    
    /**
@@ -33,8 +35,12 @@ public class Driver {
    
    public float getFare(Trip t)
    {
-      //TODO implement this
-      return 0;
+      return payRate * (float)t.distance();
+   }
+   
+   public float payRate()
+   {
+      return payRate;
    }
    
    

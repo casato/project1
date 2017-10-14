@@ -1,12 +1,23 @@
 package project1;
 
+/**
+ * Represents a passenger or customer of our rideshare service. A passenger requests a trip from our service.
+ * @author clay
+ *
+ */
 public class Passenger {
    private String firstName;
    private String lastName;
    private float balance;
    private Dispatch dispatch;
-   //new comment
    
+   /**
+    * Creates a new instance of the Passenger class.
+    * @param firstName
+    * @param lastName
+    * @param balance
+    * @param dispatch
+    */
    public Passenger(String firstName, String lastName, float balance, Dispatch dispatch)
    {
       this.firstName = firstName;
@@ -31,7 +42,7 @@ public class Passenger {
       else
       {
          //trip was cancelled.
-         System.out.println("Trip was cancelled.");
+         System.out.println("Trip was cancelled. No available drivers.");
       }
    }
    
