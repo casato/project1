@@ -56,20 +56,7 @@ public class Passenger extends Human{
       }
    }
    
-   public void deduct(float amount)
-   {
-         this.balance -= amount;
-   }
-   
-   public Location location()
-   {
-      return location;
-   }
-   
-   public float balance()
-   {
-      return balance;
-   }
+
    
 
 }

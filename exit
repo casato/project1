@@ -1,0 +1,44 @@
+[33mcommit 58e9abad4abec85873801c702a3cf9760d155939[m
+Author: clay <clay@clay-MS-7A64>
+Date:   Mon Oct 16 21:11:43 2017 -0700
+
+    Added new class Driver Comparator, Delegated tasks
+    
+    DriverComparator is meant to be added to a PriorityQueue as a sorting
+    standard for finding the right Driver
+    Moved functionality of distance() to the Location class.
+    Created a test case for DriverComparator
+
+[33mcommit ff75eb8f18a002ac3895b89c558d209396a8993f[m
+Author: clay <casato@calpoly.edu>
+Date:   Sat Oct 14 16:01:52 2017 -0700
+
+    (see previous commit)
+
+[33mcommit 66c27b225829713251916b6ae3a431d251888d64[m
+Author: clay <casato@calpoly.edu>
+Date:   Sat Oct 14 16:01:25 2017 -0700
+
+    Added Location class
+    
+    Location class is meant to standardize and encapsulate location data and
+    operations.
+
+[33mcommit dd83276a5fd4d639b15b5fcc5d14b502555875a4[m
+Author: clay <casato@calpoly.edu>
+Date:   Tue Oct 10 15:17:05 2017 -0700
+
+    made a new comment testing commit for git repo
+
+[33mcommit 0965a2606dcb6768144e15ef144f07bb4b612892[m
+Author: clay <casato@calpoly.edu>
+Date:   Mon Oct 9 14:36:07 2017 -0700
+
+    Removed the Job class and merged properties and functionality with the
+    Trip class.
+
+[33mcommit 44f46cb114ce726ac9898c4fffa2126ecbf4e4f5[m
+Author: clay <casato@calpoly.edu>
+Date:   Mon Oct 9 14:30:48 2017 -0700
+
+    Created original rough framework for project.
