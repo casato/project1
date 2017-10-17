@@ -10,6 +10,7 @@ public class Passenger {
    private String lastName;
    private float balance;
    private Dispatch dispatch;
+   private Location location;
    
    /**
     * Creates a new instance of the Passenger class.
@@ -17,13 +18,25 @@ public class Passenger {
     * @param lastName
     * @param balance
     * @param dispatch
+    * @param location
     */
-   public Passenger(String firstName, String lastName, float balance, Dispatch dispatch)
+   public Passenger(String firstName, String lastName, float balance, Dispatch dispatch, Location location)
    {
       this.firstName = firstName;
       this.lastName = lastName;
       this.balance = balance;
       this.dispatch = dispatch;
+      this.location = location;
+   }
+   
+   @Deprecated
+   /**
+    * Use for testing purposes only...
+    * @param location the starting location of this Passenger
+    */
+   public Passenger(Location location)
+   {
+      this.location = location;
    }
    
    @Override
@@ -48,7 +61,17 @@ public class Passenger {
    
    public void deduct(float amount)
    {
-      this.balance -= amount;
+         this.balance -= amount;
+   }
+   
+   public Location location()
+   {
+      return location;
+   }
+   
+   public float balance()
+   {
+      return balance;
    }
    
 

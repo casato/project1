@@ -9,16 +9,16 @@ public class Trip {
    private float fare;
    
    
-   Trip(int x1, int y1, int x2, int y2)
+   public Trip(int x1, int y1, int x2, int y2)
    {
       this.start = new Location (x1, y1);
       this.end = new Location (x2, y2);
    }
    
+
    public double distance()
    {
-      double distance = Math.sqrt(Math.pow(end.x() - start.x(),2) + Math.pow(end.y() - start.y(), 2));
-      return distance;
+      return Location.distance(start, end);
    }
    
    @Override
