@@ -5,12 +5,9 @@ package project1;
  * @author clay
  *
  */
-public class Passenger {
-   private String firstName;
-   private String lastName;
-   private float balance;
+public class Passenger extends Human{
+
    private Dispatch dispatch;
-   private Location location;
    
    /**
     * Creates a new instance of the Passenger class.
@@ -50,7 +47,7 @@ public class Passenger {
       Driver driver = dispatch.findDriver(trip, this);
       if(driver != null)
       {
-         dispatch.charge(driver, driver.getFare(trip), this);
+         dispatch.charge(driver, driver.getFare(trip, this), this);
       }
       else
       {

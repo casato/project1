@@ -25,13 +25,18 @@ public class Dispatch {
          }
       }
       
+      while(results.peek() != null)
+      {
+         if(results.peek().available())
+         {
+            return results.poll();
+         }
+         results.poll();
+      }
       return null;
    }
    
-   public float getFare(Trip trip)
-   {
-      return (float)(trip.distance() * rate);
-   }
+
    
    public boolean charge(Driver d, float fare, Passenger p)
    {

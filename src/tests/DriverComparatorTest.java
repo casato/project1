@@ -2,8 +2,11 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
+import project1.Dispatch;
 import project1.Driver;
 import project1.DriverComparator;
 import project1.Location;
@@ -24,11 +27,27 @@ public class DriverComparatorTest {
       assertEquals(comp.compare(driver2, driver3), -1);
       assertEquals(comp.compare(driver3, driver4), 1);
 
-
+   }
+      @Test
+      public void testCharge()
+      {
+         Driver driver = new Driver("Joe", "Driver", "Camry", (float)100.00, (float)3.5, new Location (5,4));
+         ArrayList<Driver> drivers = new ArrayList<Driver>();
+         drivers.add(driver);
+         Dispatch dispatch = new Dispatch(drivers);
+         Passenger passenger = new Passenger("Susan", "Pass", (float)200.00, dispatch, new Location(2, 4));
+         assertTrue(dispatch.charge(driver, 150, passenger));
+         assertEquals(passenger.balance(), 50, 0.0000001);
+         assertEquals(driver.balance(), 250, 0.00000001);
+         assertFalse(dispatch.charge(driver, 300, passenger));
+         assertEquals(passenger.balance(), 50, 0.0000001);
+         assertEquals(driver.balance(), 250, 0.00000001);
+         
+      }
 
 
       
 
-   }
+   
 
 }

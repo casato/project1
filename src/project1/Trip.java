@@ -15,6 +15,13 @@ public class Trip {
       this.end = new Location (x2, y2);
    }
    
+   public void runTrip(Driver driver, Passenger passenger)
+   {
+      //some sort of timer...
+      
+      driver.setLocation(end);
+      passenger.setLocation(end);
+   }
 
    public double distance()
    {

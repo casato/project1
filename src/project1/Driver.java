@@ -1,13 +1,11 @@
 package project1;
 
-public class Driver implements Comparable {
-   private String firstName;
-   private String lastName;
+public class Driver extends Human{
+
    private String carTitle;
    
    private boolean isAvailable;
    
-   private float balance;
    private float payRate;
    private float rating;
    
@@ -45,14 +43,7 @@ public class Driver implements Comparable {
       this.isAvailable = isAvailable;
    }
    
-   /**
-    * Gets the location of this Driver
-    * @return the location object of this driver.
-    */
-   public Location location()
-   {
-      return location;
-   }
+
    
    /**
     * gets the payrate of this driver. Payrate is the amount of currency-per-mile for a given trip.
@@ -77,9 +68,9 @@ public class Driver implements Comparable {
       this.isAvailable = isAvailable;
    }
    
-   public float getFare(Trip t)
+   public float getFare(Trip t, Passenger passenger)
    {
-      return payRate * (float)t.distance();
+      return payRate * ((float)t.distance() + (float)Location.distance(location, passenger.location()));
    }
    
    public double rating()
@@ -87,31 +78,8 @@ public class Driver implements Comparable {
       return rating;         
    }
 
-   @Override
-   /**
-    * Compares to another Driver by rating
-    * @param arg0 the other Driver to compare to
-    * @pre this method assumes the object being passed to it is a Driver
-    * @return an int <0 if arg0<this or >0 if arg0>this or 0 if they are equal
-    */
-   public int compareTo(Object arg0) {
-      Driver dr = (Driver) arg0;
-      double result = dr.rating() - this.rating();
-      if(result < 0) return -1;
-      else if(result > 0) return 1;
-      else return 0;
-      
-      }
    
-   public void credit(float amount)
-   {
-      this.balance += amount;
-   }
-   
-   public float balance()
-   {
-      return this.balance;
-   }
+
       
    
    
