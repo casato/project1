@@ -92,7 +92,7 @@ public class Driver extends Human{
       sb.append(',');
       sb.append(rating);
       sb.append(',');
-      sb.append(location);
+      sb.append(location.toStringNoParentheses());
       sb.append('\n');
       return sb.toString();
    }

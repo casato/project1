@@ -71,13 +71,11 @@ public class Dispatch {
       }
    }
    
-   public String printState()
+
+   
+   public void setPassengers(ArrayList<Passenger> passengers)
    {
-      StringBuilder sb =  new StringBuilder();
-      //Print drivers
-      sb.append("@driver\n");
-      
-      return sb.toString();
+      this.passengers = passengers;
    }
    
 

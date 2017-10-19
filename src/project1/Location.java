@@ -51,4 +51,9 @@ public class Location {
       return "(" + this.x + ", " + this.y + ")";
    }
    
+   public String toStringNoParentheses()
+   {
+      return this.x + "," + this.y;
+   }
+   
 }

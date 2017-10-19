@@ -63,7 +63,7 @@ public class Passenger extends Human{
       sb.append(',');
       sb.append(balance);
       sb.append(',');
-      sb.append(location);
+      sb.append(location.toStringNoParentheses());
       sb.append('\n');
       return sb.toString();
    }
