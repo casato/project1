@@ -20,11 +20,19 @@ public class Location {
       this.y = y;
    }
    
+   /**
+    * Gets the X-coordinate of this Location data
+    * @return the X-coordinate
+    */
    public int x()
    {
       return x;
    }
    
+   /**
+    * Gets the Y-coordinate of this Location data
+    * @return the Y-coordinate
+    */
    public int y()
    {
       return y;
@@ -51,6 +59,10 @@ public class Location {
       return "(" + this.x + ", " + this.y + ")";
    }
    
+   /**
+    * A modified version of the toString() method that excludes spaces and parentheses for easy export
+    * @return A String in the form of "x,y" representing the location data.
+    */
    public String toStringNoParentheses()
    {
       return this.x + "," + this.y;
