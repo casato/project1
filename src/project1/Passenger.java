@@ -36,11 +36,7 @@ public class Passenger extends Human{
       this.location = location;
    }
    
-   @Override
-   public String toString()
-   {
-      return firstName + lastName;
-   }
+
    
    public void requestTrip(Trip trip)
    {
@@ -48,12 +44,28 @@ public class Passenger extends Human{
       if(driver != null)
       {
          dispatch.charge(driver, driver.getFare(trip, this), this);
+         dispatch.runTrip(driver, this, trip);
       }
       else
       {
          //trip was cancelled.
          System.out.println("Trip was cancelled. No available drivers.");
       }
+   }
+   
+   @Override
+   public String toString()
+   {
+      StringBuilder sb = new StringBuilder();
+      sb.append(firstName);
+      sb.append(',');
+      sb.append(lastName);
+      sb.append(',');
+      sb.append(balance);
+      sb.append(',');
+      sb.append(location);
+      sb.append('\n');
+      return sb.toString();
    }
    
 

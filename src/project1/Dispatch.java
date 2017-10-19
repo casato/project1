@@ -7,6 +7,7 @@ public class Dispatch {
    private ArrayList<Driver> drivers;
    private ArrayList<Passenger> passengers;
    private float rate;
+   private final int TIME_CONST = 50;
    
    public Dispatch(ArrayList<Driver> drivers)
    {
@@ -36,6 +37,23 @@ public class Dispatch {
       return null;
    }
    
+   public void runTrip(Driver driver, Passenger passenger, Trip trip)
+   {
+      //some sort of timer...
+      driver.setAvailable(false);
+      try
+      {
+         Thread.sleep(TIME_CONST * (long)Location.distance(trip.start(), trip.end()));
+      }
+      catch (InterruptedException e)
+      {
+         e.printStackTrace();
+      }
+      
+      driver.setLocation(trip.end());
+      driver.setAvailable(true);
+      passenger.setLocation(trip.end());
+   }
 
    
    public boolean charge(Driver d, float fare, Passenger p)
@@ -51,6 +69,15 @@ public class Dispatch {
          System.out.println("Insufficient funds. Transaction cancelled");
          return false;
       }
+   }
+   
+   public String printState()
+   {
+      StringBuilder sb =  new StringBuilder();
+      //Print drivers
+      sb.append("@driver\n");
+      
+      return sb.toString();
    }
    
 

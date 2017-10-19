@@ -77,6 +77,25 @@ public class Driver extends Human{
    {
       return rating;         
    }
+   
+   @Override
+   public String toString()
+   {
+      StringBuilder sb = new StringBuilder();
+      sb.append(firstName);
+      sb.append(',');
+      sb.append(lastName);
+      sb.append(',');
+      sb.append(carTitle);
+      sb.append(',');
+      sb.append(balance);
+      sb.append(',');
+      sb.append(rating);
+      sb.append(',');
+      sb.append(location);
+      sb.append('\n');
+      return sb.toString();
+   }
 
    
 
