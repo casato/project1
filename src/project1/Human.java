@@ -18,8 +18,8 @@ public abstract class Human {
    }
    
    /**
-    * Gets the location of this Driver
-    * @return the location object of this driver.
+    * Gets the location of this Human
+    * @return the location object of this Human.
     */
    public Location location()
    {

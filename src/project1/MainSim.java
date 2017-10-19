@@ -1,51 +1,144 @@
 package project1;
 
 import java.util.*;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.XMLFormatter;
 import java.io.*;
+import java.text.SimpleDateFormat;
 
 public class MainSim {
-   
-   private static final String inputFile = "input";
-   private static final String outputFile = "output";
-   
+
+   private static final String inputFile = "input.ubi";
+   private static final String outputFile = "output.ubo";
+   private static final String logFile = "dispatchlog.xml";
+   private static XMLFormatter formatter;
+   private static FileHandler handler;
+   private static String dateString;
+   private static ArrayList<Passenger> passengers;
+   private static ArrayList<Driver> drivers;
 
    public static void main(String [] args)
    {
       //read in init file
-      
+
+      //initialize log file
+      setUpLogger();
+
+
       //run program
-      
+
       //export log
-      
+      handler.flush();
+
       //export final file
    }
-   
-   private static ArrayList<Passenger> getPassFromFile(File f)
+
+   public static FileHandler fileHandler()
    {
-      return null;
+      return handler;
    }
-   
-   private static ArrayList<Driver> getDriverFromFile(File f)
+
+   public static void setUpLogger()
    {
-      return null;
+      dateString = new SimpleDateFormat("yy-MM-dd_HHmmss_").format(new Date());
+      formatter = new XMLFormatter();
+
+      try
+      {
+         handler = new FileHandler(dateString + logFile);
+         handler.setFormatter(formatter);
+
+      }
+      catch (Exception e)
+      {
+         System.out.println("Unable to initialize log file: " + logFile);
+         e.printStackTrace();
+      }
+
    }
-   
-   public static void exportStateToFile(File f, ArrayList<Driver> drivers, ArrayList<Passenger> passengers)
+
+   public static void importFromFile(File f)
    {
+      drivers = new ArrayList<Driver>();
+      passengers = new ArrayList<Passenger>();
+      try {
+         Scanner sc = new Scanner(f);
+         String line = "";
+         while(sc.hasNext() && !line.contains("@driver"))
+         {
+            line = sc.nextLine();
+         }
+         line = sc.nextLine();
+         while(sc.hasNext() && !line.contains("@passenger"))
+         {
+            if(!line.equals(""))
+            {
+               String[] info = line.split(",");
+               Driver d = new Driver(info[0], info[1], info[2], Float.parseFloat(info[3]), 
+                     Float.parseFloat(info[4]), new Location(Integer.parseInt(info[5]), 
+                           Integer.parseInt(info[6])));
+               handler.publish(new LogRecord(Level.INFO, "Read in Driver: " + d));
+
+               drivers.add(d);
+            }
+            line = sc.nextLine();
+         }
+         line = sc.nextLine();
+         while(sc.hasNext())
+         {
+            if(!line.equals(""))
+            {
+               
+               String[] info = line.split(",");
+               System.out.println(line + info.length);
+               Passenger p = new Passenger(info[0], info[1], Float.parseFloat(info[2]), 
+                     new Location (Integer.parseInt(info[3]), Integer.parseInt(info[4])));
+               handler.publish(new LogRecord(Level.INFO, "Read in Passenger: " + p));
+               passengers.add(p);
+               
+            }
+            line = sc.nextLine();
+         }
+         sc.close();
+      }
+      catch(Exception e)
+      {
+         if(e instanceof IOException)
+         {
+            handler.publish(new LogRecord(Level.WARNING, "Unable to open input file: " + f.getName()));
+         }
+         else
+         {
+            handler.publish(new LogRecord(Level.WARNING, "Input file contains syntax errors: " + f.getName() + e));
+
+         }
+
+      }
+   }
+
+
+   public static void exportStateToFile(File f)
+   {
+      handler.publish(new LogRecord(Level.INFO, "Beginning export to file..."));
       try {
          FileWriter fwrite = new FileWriter(f);
-         fwrite.write(printState(drivers, passengers));
+         fwrite.write(printState());
+         fwrite.write("@end\n");
          fwrite.close();
+         handler.publish(new LogRecord(Level.INFO, "File export complete."));
+
       }
       catch (IOException e)
       {
-         System.out.println("Unable to open file for writing... File export skipped");
-         e.printStackTrace();
+         handler.publish(new LogRecord(Level.WARNING, "Unable to open file for writing... File export skipped" + e.toString()));
+
       }
-      
+
    }
-   
-   public static String printState(ArrayList <Driver> drivers, ArrayList<Passenger> passengers)
+
+   public static String printState()
    {
       StringBuilder sb =  new StringBuilder();
       //Print drivers
@@ -55,9 +148,9 @@ public class MainSim {
          sb.append(d);
          sb.append('\n');
       }
-      
+
       //print passengers
-      
+
       sb.append("@passenger\n");
       for(Passenger p : passengers)
       {

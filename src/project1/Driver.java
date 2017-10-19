@@ -9,7 +9,6 @@ public class Driver extends Human{
    private float payRate;
    private float rating;
    
-   private Location location;
    
    private final float BASE_PAY = 3;
    private final float RATING_ADJUSTMENT_FACTOR = 2;

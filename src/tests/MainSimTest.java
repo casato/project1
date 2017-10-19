@@ -15,7 +15,7 @@ import project1.Passenger;
 
 public class MainSimTest {
 
-   @Test
+   /*@Test
    public void testPrintState() {
       Driver driver1 = new Driver("Joe", "Driver", "Camry", (float)100.00, (float)3.5, new Location (5,4));
       Driver driver2 = new Driver("second", "Driver", "civic", (float)100.00, (float)4.5, new Location (5,4));
@@ -29,19 +29,33 @@ public class MainSimTest {
       
       Dispatch dispatch = new Dispatch(drivers);
       
-      Passenger p1 = new Passenger("Jesse", "McCree", (float)130.00, dispatch, new Location(1,1));
-      Passenger p2 = new Passenger("Gabriel", "Reyes", (float)277.00, dispatch, new Location(98,66));
+      Passenger p1 = new Passenger("Jesse", "McCree", (float)130.00, new Location(1,1));
+      Passenger p2 = new Passenger("Gabriel", "Reyes", (float)277.00, new Location(98,66));
       
       ArrayList<Passenger> passengers = new ArrayList();
       passengers.add(p1);
       passengers.add(p2);
       
-      System.out.print(MainSim.printState(drivers,passengers));
+      //System.out.print(MainSim.printState());
       
       File f = new File("test-output");   
-      System.out.println(f.canWrite());
-      MainSim.exportStateToFile(f, drivers, passengers);
+      MainSim.setUpLogger();
+      MainSim.exportStateToFile(f);
       
-      }
+      
+      }*/
+   
+   @Test
+   public void testImportFromFile()
+   {
+      File f = new File("test-input.ubi");
+      MainSim.setUpLogger();
+      MainSim.importFromFile(f);
+      File fout = new File("test-output.ubo");
+      MainSim.exportStateToFile(fout);
+      
+      System.out.println("diff the two files and they should be the same");
+      
+   }
 
 }

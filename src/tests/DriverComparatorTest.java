@@ -35,7 +35,8 @@ public class DriverComparatorTest {
          ArrayList<Driver> drivers = new ArrayList<Driver>();
          drivers.add(driver);
          Dispatch dispatch = new Dispatch(drivers);
-         Passenger passenger = new Passenger("Susan", "Pass", (float)200.00, dispatch, new Location(2, 4));
+         Passenger passenger = new Passenger("Susan", "Pass", (float)200.00, new Location(2, 4));
+         passenger.setDispatch(dispatch);
          assertTrue(dispatch.charge(driver, 150, passenger));
          assertEquals(passenger.balance(), 50, 0.0000001);
          assertEquals(driver.balance(), 250, 0.00000001);

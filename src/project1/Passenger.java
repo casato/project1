@@ -17,13 +17,17 @@ public class Passenger extends Human{
     * @param dispatch
     * @param location
     */
-   public Passenger(String firstName, String lastName, float balance, Dispatch dispatch, Location location)
+   public Passenger(String firstName, String lastName, float balance, Location location)
    {
       this.firstName = firstName;
       this.lastName = lastName;
       this.balance = balance;
-      this.dispatch = dispatch;
       this.location = location;
+   }
+   
+   public void setDispatch(Dispatch dispatch)
+   {
+      this.dispatch = dispatch;
    }
    
    @Deprecated
@@ -52,6 +56,8 @@ public class Passenger extends Human{
          System.out.println("Trip was cancelled. No available drivers.");
       }
    }
+   
+
    
    @Override
    public String toString()

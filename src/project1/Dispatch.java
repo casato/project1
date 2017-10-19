@@ -2,16 +2,36 @@ package project1;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+import java.util.logging.*;
+import java.io.*;
 
 public class Dispatch {
    private ArrayList<Driver> drivers;
    private ArrayList<Passenger> passengers;
    private float rate;
    private final int TIME_CONST = 50;
+   private FileHandler handler;
+   private XMLFormatter formatter;
    
    public Dispatch(ArrayList<Driver> drivers)
    {
       this.drivers = drivers;
+      LogRecord record = new LogRecord(Level.INFO, "Created Dispatch object");
+      try
+      {
+         
+         this.formatter = new XMLFormatter();
+
+         handler = new FileHandler("dispatchlog.xml");
+         handler.setFormatter(formatter);
+         handler.publish(record);
+         handler.flush();
+      }
+      catch(Exception e)
+      {
+         e.printStackTrace();
+      }
+      
    }
    
    public Driver findDriver(Trip t, Passenger passenger)
