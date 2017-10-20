@@ -68,6 +68,21 @@ public class DispatchTest {
       
    }
    
+   @Test
+   public void testRunTrip()
+   {
+      Driver driver1 = new Driver("Gabriel", "Reyes", "Camry", (float)100.00, (float)3.5, new Location (5,4));
+      Passenger p1 = new Passenger("Jesse", "McCree", (float)130.00, new Location(1,1));
+      Trip t = new Trip(1, 1, 150,298);
+      ArrayList<Driver> drivers = new ArrayList<Driver>();
+      drivers.add(driver1);
+      Dispatch d = new Dispatch(drivers);
+      d.runTrip(driver1, p1, t);
+      assertTrue(driver1.available());
+      assertTrue(p1.location().x() == t.end().x());
+      assertTrue(p1.location().y() == t.end().y());
+   }
+   
 
 
 

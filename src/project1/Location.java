@@ -1,5 +1,7 @@
 package project1;
 
+import java.util.Random;
+
 /**
  * Location class encapsulates location data for a 2d grid. It is represented by an x and y coordinate.
  * @author clay
@@ -66,6 +68,14 @@ public class Location {
    public String toStringNoParentheses()
    {
       return this.x + "," + this.y;
+   }
+   
+   public static Location randomLocation()
+   {
+      Random r = new Random();
+      float x = r.nextFloat();
+      float y = r.nextFloat();
+      return new Location((int)(x * MainSim.GRID_LIMIT), (int)(y * MainSim.GRID_LIMIT));
    }
    
 }

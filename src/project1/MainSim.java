@@ -18,22 +18,35 @@ public class MainSim {
    private static String dateString;
    private static ArrayList<Passenger> passengers;
    private static ArrayList<Driver> drivers;
+   
+   public static final int GRID_LIMIT = 300;
 
    public static void main(String [] args)
    {
       //read in init file
+      
+      File in = new File(inputFile);
+      File out = new File(outputFile);
+      importFromFile(in);
+      
 
       //initialize log file
       setUpLogger();
 
-
       //run program
+      for(int i = 0; i < 5; i++)
+      {
+         
+      }
 
       //export log
       handler.flush();
 
       //export final file
+      exportStateToFile(out);
    }
+   
+
 
    public static FileHandler fileHandler()
    {

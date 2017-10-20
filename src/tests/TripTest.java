@@ -12,7 +12,7 @@ import project1.Location;
 import project1.Passenger;
 import project1.Trip;
 
-public class Tester {
+public class TripTest {
 
    @Test
    public void testTripDistance() {

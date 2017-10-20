@@ -14,7 +14,7 @@ public class Dispatch {
    private ArrayList<Driver> drivers;
    private ArrayList<Passenger> passengers;
    private float rate;
-   private final int TIME_CONST = 50;
+   private final int TIME_CONST = 10;
    private FileHandler handler;
    private XMLFormatter formatter;
    
