@@ -54,12 +54,18 @@ public class MainSim {
    }
    
 
-
+   /**
+    * Returns the FileHandler for XML Logging
+    * @return a FileHandler used for XML Logging
+    */
    public static FileHandler fileHandler()
    {
       return handler;
    }
 
+   /**
+    * Initializes an XML Log file and a logging handler. This must be called during setup to enable XML Logging.
+    */
    public static void setUpLogger()
    {
       dateString = new SimpleDateFormat("yy-MM-dd_HHmmss_").format(new Date());
@@ -78,7 +84,10 @@ public class MainSim {
       }
 
    }
-
+/**
+ * Imports start data from provided file
+ * @param f the File to read from
+ */
    public static void importFromFile(File f)
    {
       drivers = new ArrayList<Driver>();
@@ -137,7 +146,10 @@ public class MainSim {
       }
    }
 
-
+   /**
+    * Writes the end conditions including all Drivers and Passengers in a formatted file that can be read in by this program again.
+    * @param f the File to write to
+    */
    public static void exportStateToFile(File f)
    {
       handler.publish(new LogRecord(Level.INFO, "Beginning export to file..."));
@@ -157,6 +169,10 @@ public class MainSim {
 
    }
 
+   /**
+    * Writes all Drivers and Passengers to a String
+    * @return a String with each Driver and Passenger's information
+    */
    public static String printState()
    {
       StringBuilder sb =  new StringBuilder();

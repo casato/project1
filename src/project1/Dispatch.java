@@ -52,7 +52,7 @@ public class Dispatch {
          if(results.peek().available())
          {
             if(MainSim.fileHandler() != null)
-               MainSim.fileHandler().publish(new LogRecord(Level.INFO, "Found a driver"));
+               MainSim.fileHandler().publish(new LogRecord(Level.INFO, "Found a driver: " + results.peek().toString()));
             return results.poll();
          }
          results.poll();
@@ -70,7 +70,7 @@ public class Dispatch {
    {
       if(MainSim.fileHandler() != null)
       {
-         MainSim.fileHandler().publish(new LogRecord(Level.INFO, "Trip initiated for " + passenger + " with Driver: " + driver));
+         MainSim.fileHandler().publish(new LogRecord(Level.INFO, "Trip initiated for " + passenger + " with Driver: " + driver + " Fare: " + driver.getFare(trip, passenger)));
       }
       //some sort of timer...
       driver.setAvailable(false);
@@ -88,7 +88,7 @@ public class Dispatch {
       passenger.setLocation(trip.end());
       if(MainSim.fileHandler() != null)
       {
-         MainSim.fileHandler().publish(new LogRecord(Level.INFO, "Locations updated. Trip complete."));
+         MainSim.fileHandler().publish(new LogRecord(Level.INFO, "Locations updated. Trip complete. New Location: " + trip.end()));
       }
    }
 

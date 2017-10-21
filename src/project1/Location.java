@@ -56,11 +56,12 @@ public class Location {
    }
 
 
-   @Override
+
    /**
     * Generates a string to represent the location data in the form of "(x, y)"
     * @return a String in the form of "(x, y)" representing the location data
     */
+   @Override
    public String toString()
    {
       return "(" + this.x + ", " + this.y + ")";
@@ -75,12 +76,35 @@ public class Location {
       return this.x + "," + this.y;
    }
 
+   /**
+    * Generates a random location within the grid limit for generating random rides.
+    * @return a Location with random coordinates (within the grid limit)
+    */
    public static Location randomLocation()
    {
       Random r = new Random();
       float x = r.nextFloat();
       float y = r.nextFloat();
       return new Location((int)(x * MainSim.GRID_LIMIT), (int)(y * MainSim.GRID_LIMIT));
+   }
+   
+
+   /**
+    * Tests if this is equal to another Location
+    * @param other the other Location
+    * @return a boolean. True if they are equal. False if they are not equal.
+    */
+   @Override
+   public boolean equals(Object other)
+   {
+      if(other instanceof Location)
+      {
+         Location l = (Location) other;
+         if(l.x() == this.x && l.y() == this.y)
+            return true;
+      }
+      
+      return false;
    }
 
 }

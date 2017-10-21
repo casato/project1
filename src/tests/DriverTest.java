@@ -1,8 +1,13 @@
-package project1;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import project1.Driver;
+import project1.Location;
+import project1.Passenger;
+import project1.Trip;
 
 public class DriverTest {
 

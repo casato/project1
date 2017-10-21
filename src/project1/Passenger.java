@@ -14,11 +14,10 @@ public class Passenger extends Human{
    
    /**
     * Creates a new instance of the Passenger class.
-    * @param firstName
-    * @param lastName
-    * @param balance
-    * @param dispatch
-    * @param location
+    * @param firstName the Passenger's first name
+    * @param lastName the Passenger's last name
+    * @param balance the Passenger's wallet amount
+    * @param location the starting Location of the Passenger
     */
    public Passenger(String firstName, String lastName, float balance, Location location)
    {
@@ -69,6 +68,8 @@ public class Passenger extends Human{
          //trip was cancelled.
          if(MainSim.fileHandler() != null)
             MainSim.fileHandler().publish(new LogRecord(Level.WARNING, "Trip was cancelled. No Available Drivers."));
+         else
+            System.out.println("No available drivers");
       }
    }
    

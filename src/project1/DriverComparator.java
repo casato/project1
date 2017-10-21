@@ -11,13 +11,13 @@ public class DriverComparator implements Comparator{
       this.passenger = passenger;
    }
 
-   @Override
    /**
     * "Returns a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater than the second."
     * @param arg0 The first argument, assumed to be a Driver
     * @param arg1 The second argument, assumed to be a Driver
     * @prerequisite arg0 and arg1 must be Drivers.
     */
+   @Override
    public int compare(Object arg0, Object arg1) {
       Driver d0 = (Driver)arg0;
       Driver d1 = (Driver)arg1;

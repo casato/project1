@@ -15,10 +15,8 @@ public class Trip {
    
    /**
     * Instantiates a new Trip object.
-    * @param x1 the x-coordinate of the start Location
-    * @param y1 the y-coordinate of the start Location
-    * @param x2 the x-coordinate of the end Location
-    * @param y2 the y-coordinate of the end Location
+    * @param start the origin Location
+    * @param end the destination Location
     * @throws InputMismatchException
     */
    public Trip(Location start, Location end)
