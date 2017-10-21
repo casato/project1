@@ -16,3 +16,11 @@ To use the cleanup utility:
 -Open a terminal window in the root directory of this project (where all the log files are)
 -type the following command: ./clean.sh
 -All old logs and output files are now deleted.
+
+
+How this is expandable to UberEats:
+-Because UberEats is very similar to the Uber service, expanding to add this functionality should not be difficult.
+-I can create an EatsTrip class that extends Trip and includes a Restaurant name and order.
+-The payment system can remain the same.
+-I can create an EatsDriver class that will extend the Driver class and can calculate the total cost including the food and mileage.
+-I can reuse the transaction system and Dispatch.
