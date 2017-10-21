@@ -1,0 +1,18 @@
+HOW TO RUN THIS PROGRAM
+
+-This program reads 1 file and creates 2 files.
+
+The input file must be named "input.ubi"
+
+The output file will be named "output.ubo"
+
+The log file will be named "{date+time}_dispatchlog.xml"
+
+--By default this program runs 5 random trip **REQUESTS** some trips may not be completed 
+--due to driver unavailability or insufficient funds. These are noted in the log file.
+
+I also included a cleanup script to remove any old log and output files that are no longer needed.
+To use the cleanup utility:
+-Open a terminal window in the root directory of this project (where all the log files are)
+-type the following command: ./clean.sh
+-All old logs and output files are now deleted.
