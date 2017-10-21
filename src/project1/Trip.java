@@ -21,14 +21,11 @@ public class Trip {
     * @param y2 the y-coordinate of the end Location
     * @throws InputMismatchException
     */
-   public Trip(int x1, int y1, int x2, int y2) throws InputMismatchException
+   public Trip(Location start, Location end)
    {
-      if(x1 < 0 || x2 < 0 || y1 < 0 || y2 < 0)
-      {
-         throw new InputMismatchException("Location data must be positive and within grid boundaries");
-      }
-      this.start = new Location (x1, y1);
-      this.end = new Location (x2, y2);
+      
+      this.start =  start;
+      this.end = end;
    }
    
    /**

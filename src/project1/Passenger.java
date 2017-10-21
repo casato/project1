@@ -59,8 +59,10 @@ public class Passenger extends Human{
       Driver driver = dispatch.findDriver(trip, this);
       if(driver != null)
       {
-         dispatch.charge(driver, driver.getFare(trip, this), this);
-         dispatch.runTrip(driver, this, trip);
+         if(dispatch.charge(driver, driver.getFare(trip, this), this))
+         {
+            dispatch.runTrip(driver, this, trip);
+         }
       }
       else
       {

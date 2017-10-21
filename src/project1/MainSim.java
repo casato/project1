@@ -23,20 +23,27 @@ public class MainSim {
 
    public static void main(String [] args)
    {
-      //read in init file
-      
-      File in = new File(inputFile);
-      File out = new File(outputFile);
-      importFromFile(in);
       
 
       //initialize log file
       setUpLogger();
 
+      
+      //read in init file
+      
+      File in = new File(inputFile);
+      File out = new File(outputFile);
+      importFromFile(in);
+
       //run program
       for(int i = 0; i < 5; i++)
       {
-         
+         Random r = new Random();
+         Passenger p = passengers.get(r.nextInt(passengers.size()));
+         Trip t = new Trip(p.location(), Location.randomLocation());
+         Dispatch d = new Dispatch(drivers);
+         p.setDispatch(d);
+         p.requestTrip(t);
       }
 
       //export log
@@ -105,7 +112,6 @@ public class MainSim {
             {
                
                String[] info = line.split(",");
-               System.out.println(line + info.length);
                Passenger p = new Passenger(info[0], info[1], Float.parseFloat(info[2]), 
                      new Location (Integer.parseInt(info[3]), Integer.parseInt(info[4])));
                handler.publish(new LogRecord(Level.INFO, "Read in Passenger: " + p));

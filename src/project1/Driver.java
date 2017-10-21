@@ -15,8 +15,8 @@ public class Driver extends Human{
    private float rating;
    
    
-   private final float BASE_PAY = 3;
-   private final float RATING_ADJUSTMENT_FACTOR = 2;
+   private final float BASE_PAY = 0.30f;
+   private final float RATING_ADJUSTMENT_FACTOR = 0.20f;
    
    /**
     * Instantiates a Driver object with name and car title.

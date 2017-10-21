@@ -36,7 +36,7 @@ public class DispatchTest {
       drivers.add(driver4);
       
       Dispatch dispatch = new Dispatch(drivers);
-      Trip t = new Trip(0, 0, 3, 4);
+      Trip t = new Trip(new Location (0,0), new Location (3,4));
       
       
       assertEquals(driver4,dispatch.findDriver(t, new Passenger(new Location(0,0))));
@@ -58,7 +58,7 @@ public class DispatchTest {
       drivers.add(driver4);
       
       Dispatch dispatch = new Dispatch(drivers);
-      Trip t = new Trip(0, 0, 3, 4);
+      Trip t = new Trip(new Location (0,0), new Location (3,4));
       Passenger p1 = new Passenger("Jesse", "McCree", (float)130.00, new Location(1,1));
       
       dispatch.charge(driver1, (float)70.00, p1);
@@ -73,7 +73,7 @@ public class DispatchTest {
    {
       Driver driver1 = new Driver("Gabriel", "Reyes", "Camry", (float)100.00, (float)3.5, new Location (5,4));
       Passenger p1 = new Passenger("Jesse", "McCree", (float)130.00, new Location(1,1));
-      Trip t = new Trip(1, 1, 150,298);
+      Trip t = new Trip(new Location(1, 1), new Location (150,298));
       ArrayList<Driver> drivers = new ArrayList<Driver>();
       drivers.add(driver1);
       Dispatch d = new Dispatch(drivers);
